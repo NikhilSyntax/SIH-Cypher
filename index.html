@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Login and Map Route</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="portal-select">
+            <h2>Select Your Portal</h2>
+            <button onclick="showUserLogin()">User Portal</button>
+            <button onclick="showAuthorityLogin()">Authority Portal</button>
+        </div>
+
+        <!-- User Login Form -->
+        <div id="user-login" class="login-form" style="display:none;">
+            <h2>User Login</h2>
+            <form onsubmit="loginUser(event)">
+                <label for="user-email">Email:</label>
+                <input type="email" id="user-email" required>
+                <label for="user-password">Password:</label>
+                <input type="password" id="user-password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="showUserRegister()">Register here</a></p>
+        </div>
+
+        <!-- Authority Login Form -->
+        <div id="authority-login" class="login-form" style="display:none;">
+            <h2>Authority Login</h2>
+            <form onsubmit="loginAuthority(event)">
+                <label for="authority-email">Email:</label>
+                <input type="email" id="authority-email" required>
+                <label for="authority-password">Password:</label>
+                <input type="password" id="authority-password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="showAuthorityRegister()">Register here</a></p>
+        </div>
+
+        <!-- User Registration Form -->
+        <div id="user-register" class="register-form" style="display:none;">
+            <h2>User Registration</h2>
+            <form onsubmit="registerUser(event)">
+                <label for="user-name">Name:</label>
+                <input type="text" id="user-name" required>
+                <label for="user-phone">Phone Number:</label>
+                <input type="text" id="user-phone" required>
+                <label for="user-address">Address:</label>
+                <input type="text" id="user-address" required>
+                <label for="user-register-email">Email:</label>
+                <input type="email" id="user-register-email" required>
+                <label for="user-register-password">Password:</label>
+                <input type="password" id="user-register-password" required>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="showUserLogin()">Login here</a></p>
+        </div>
+
+        <!-- Authority Registration Form -->
+        <div id="authority-register" class="register-form" style="display:none;">
+            <h2>Authority Registration</h2>
+            <form onsubmit="registerAuthority(event)">
+                <label for="authority-name">Name:</label>
+                <input type="text" id="authority-name" required>
+                <label for="authority-phone">Phone Number:</label>
+                <input type="text" id="authority-phone" required>
+                <label for="authority-address">Address:</label>
+                <input type="text" id="authority-address" required>
+                <label for="authority-register-email">Email:</label>
+                <input type="email" id="authority-register-email" required>
+                <label for="authority-register-password">Password:</label>
+                <input type="password" id="authority-register-password" required>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="showAuthorityLogin()">Login here</a></p>
+        </div>
+
+        <!-- Location Selection Form -->
+        <div id="location-form" class="location-form" style="display:none;">
+            <h2>Select Destination</h2>
+            <form onsubmit="showRoute(event)">
+                <label for="destination">Destination:</label>
+                <input type="text" id="destination" required>
+                <button type="submit">Show Route</button>
+            </form>
+            <div id="map" style="height: 500px; width: 100%; margin-top: 20px;"></div>
+        </div>
+    </div>
+    <!-- Add this spinner in the HTML -->
+    <div id="loading" style="display: none;">Loading...</div>
+
+    <script src="script.js"></script>
+
+    <!-- Load Google Maps API asynchronously with callback to initMap -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMu6eOJPasOTnP56gHyA2zsTVKw0FnmzY&callback=initMap"
+        async defer>
+    </script>
+</body>
+</html>
+
